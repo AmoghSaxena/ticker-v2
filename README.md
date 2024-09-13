@@ -1,5 +1,3 @@
-Here's a sample `README.md` file for your project:
-
 # On-Screen Ticker Display
 
 This Python project uses Pygame to create a customizable on-screen ticker display, similar to those seen on news channels. The ticker can be configured to scroll text across the top or bottom of the screen with customizable colors and direction.
