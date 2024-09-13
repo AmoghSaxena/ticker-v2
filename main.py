@@ -1,15 +1,15 @@
 import pygame
 import sys
 import os
-import json
+import yaml
 import win32gui
 import win32con
 
 pygame.init()
 
 # Load configuration
-with open('config.json', 'r') as f:
-    config = json.load(f)
+with open('config.yml', 'r') as f:
+    config = yaml.safe_load(f)
 
 background_color = tuple(config.get("background_color", [255, 165, 0]))
 font_color = tuple(config.get("font_color", [255, 255, 255]))
@@ -21,8 +21,10 @@ position = config.get("position", "bottom")
 info = pygame.display.Info()
 screen_width, screen_height = info.current_w, info.current_h
 
+# Set ticker height to 1/8th of the screen height
+ticker_height = int(screen_height / 8)
+
 # Set up a window with no frame
-ticker_height = int(screen_height/7)
 screen = pygame.display.set_mode((screen_width, ticker_height), pygame.NOFRAME)
 pygame.display.set_caption("News Channel Ticker")
 
@@ -34,7 +36,7 @@ os.environ['SDL_VIDEO_WINDOW_POS'] = f"0,{y_position}"
 hwnd = pygame.display.get_wm_info()['window']
 win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, 0, y_position, screen_width, ticker_height, 0)
 
-# Fonts
+# Set font size to ticker_height - 2
 font = pygame.font.Font(None, ticker_height - 2)
 
 def create_ticker(text, color):
@@ -44,7 +46,7 @@ def create_ticker(text, color):
         text_rect.left = screen_width
     else:
         text_rect.right = 0
-    text_rect.bottom = ticker_height
+    text_rect.centery = ticker_height // 2  # Center the text vertically
     return text_surface, text_rect
 
 def main():
@@ -73,7 +75,7 @@ def main():
         
         # Update the display
         pygame.display.flip()
-        clock.tick(60)
+        clock.tick(120)
     
     pygame.quit()
     sys.exit()

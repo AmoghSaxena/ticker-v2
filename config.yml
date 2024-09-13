@@ -1,0 +1,6 @@
+# Configuration for ticker
+background_color: [255, 165, 0]  # Background color in RGB
+font_color: [255, 255, 255]      # Font color in RGB
+direction: left                  # Direction of ticker: left or right
+ticker_text: "We thought you'd like to know that we've dispatched your item(s). Your order is on the way, and can no longer be changed. If you need to return an item or manage other orders, please visit Your Orders on Amazon.co.uk"  # Text to display
+position: top                 # Position of ticker: top or bottom

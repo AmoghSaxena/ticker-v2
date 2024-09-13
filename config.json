@@ -1,7 +1,0 @@
-{
-    "background_color": [255, 165, 0],
-    "font_color": [255, 255, 255],
-    "direction": "left",
-    "ticker_text": "Breaking News: This is a configurable ticker!",
-    "position": "top"
-}
