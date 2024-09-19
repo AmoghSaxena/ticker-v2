@@ -4,5 +4,5 @@ font_color: [255, 255, 255]      # Font color in RGB
 direction: left                  # Direction of ticker: left(<--) or right(-->)
 ticker_text: "service, offered free of charge, instantly translates words, phrases, and web pages between English and over 100 other languages."  # Text to display
 position: bottom                 # Position of ticker: top or bottom
-logo_path: ""            # Path to logo image (leave empty if no logo)
-logo_position: right              # Position of logo: left or right
+logo_path: ""                    # Path to logo image (leave empty if no logo)
+logo_position: right             # Position of logo: left or right
