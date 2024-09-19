@@ -1,9 +1,16 @@
-import pygame
 import sys
 import os
+os.environ['PYGAME_FREETYPE'] = '1'
+import pygame
+import pygame.freetype
 import yaml
-import win32gui
-import win32con
+import platform
+if platform.system() == 'Windows':
+    import win32gui
+    import win32con
+elif platform.system() == 'Linux':
+    print("RUNNING ON LINUX MAKE SURE TO SET ALWAYS ON TOP FEATURE")
+
 
 # -*- coding: utf-8 -*-
 
@@ -38,8 +45,9 @@ y_position = 0 if position == "top" else screen_height - ticker_height
 os.environ['SDL_VIDEO_WINDOW_POS'] = f"0,{y_position}"
 
 # Get the window handle and set it to be always on top
-hwnd = pygame.display.get_wm_info()['window']
-win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, 0, y_position, screen_width, ticker_height, 0)
+if platform.system() == 'Windows':
+    hwnd = pygame.display.get_wm_info()['window']
+    win32gui.SetWindowPos(hwnd, win32con.HWND_TOPMOST, 0, y_position, screen_width, ticker_height, 0)
 
 # Load a font that supports your language using freetype
 font_path = "font.ttf"  # Replace with your font file path
